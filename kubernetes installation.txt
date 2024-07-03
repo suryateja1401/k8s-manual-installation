@@ -76,10 +76,10 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 
-Installing kubeinit:
+Installing kubeinit:execute in master only not in worker####
 ===============================
 
-sudo kubeadm init --pod-network-cidr=<provide your vpc/subnet cidr>10.200.0.0/16 --apiserver-advertise-address=<provide your master node pvt ip>172.31.50.115
+sudo kubeadm init --pod-network-cidr=<provide your vpc/subnet cidr>10.200.0.0/16 --apiserver-advertise-address=<provide your master node pvt ip>
 
 
 $$$$After executing the above command please run the command the commands that will appera on the screen after the avove command execuition:
@@ -105,8 +105,13 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 kubeadm join 172.31.50.115:6443 --token hhw96k.6nyhkpo5b4b50in5 \
         --discovery-token-ca-cert-hash sha256:2fa3270b5e0cf3816cfbeee77013fd1fe4f278a8bdc37d922a1a55caf0eb020a ---->>> execute in worker nodes to join with master nodes
 
+kubeadm token create --print-join-command ------>to reterive kubeadm join token
+
+
 kubectl get nodes
  but nodes status is not ready for that we need to install container network interface(CNI)
+
+
  
  
  visit the github page:
